@@ -1,0 +1,29 @@
+- @title = 'Пройти тест'
+
+.header-h1 Пройти тест
+
+h3 Вам назначены тесты
+
+- if @mass_active.blank?
+  p = 'Вам еще не назначили тесты'
+
+- else
+
+  table.table.table-striped
+    - @mass_active.each do |active|
+      tr
+        td = active.test_name
+        td = link_to 'Пройти тест', test_path(active.id)
+
+h3 Тесты, которые Вы уже прошли
+
+- if @mass_passed.blank?
+  p = 'Вы еще не прошли ни одного теста'
+
+- else
+
+  table.table.table-striped
+    - @mass_passed.each do |passed|
+      tr
+        td = passed.test_name
+        td = link_to 'Посмотреть результат', root_path

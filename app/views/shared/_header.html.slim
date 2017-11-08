@@ -1,0 +1,16 @@
+- if !current_user.nil?
+  i.hi.hi-sign-out.hi-lg
+    = link_to 'Выйти', signout_path, method: 'delete'
+  span.nav__link-text.fio = "#{current_user.user_name}" + " " +"#{current_user.surname}"
+  - if admin?
+    i.hi.hi-sign-out.hi-lg
+      = link_to 'Назначить тест/курс', assign_path
+  - else
+    i.hi.hi-sign-out.hi-lg
+      = link_to 'Пройти тест/курс', check_path
+
+- else
+  i.hi.hi-sign-in.hi-lg
+    = link_to 'Войти', signin_path
+  i.hi.hi-user.hi-lg
+    = link_to 'Регистрация', signup_path

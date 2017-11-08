@@ -1,0 +1,25 @@
+- @title = 'Назначить тест'
+
+.header-h1 Назначить тест
+
+= form_for @user_test, url: {action: 'create_dop_info'} do |f|
+
+  h3 Выбрать тест
+
+  table.table.table-striped
+
+    - @tests.each do |test|
+      tr
+        td = f.label :test_id, test.test_name
+        td = f.check_box :test_id, { multiple: true }, "#{test.id}", nil
+
+  h3 Выбрать пользователя
+
+  table.table.table-striped
+
+    - @users.each do |user|
+      tr
+        td = f.label :user_id, user.user_name
+        td = f.check_box :user_id, { multiple: true }, "#{user.id}", nil
+
+  = f.submit('Назначить', class: 'btn-primary')

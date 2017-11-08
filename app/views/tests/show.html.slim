@@ -1,0 +1,11 @@
+- @title = "Пройти тест #{@test.test_name}"
+
+.header-h1 Пройти тест #{@test.test_name}
+
+.header-h1 Вопросы:
+
+= form_for :test do |f|
+      .question_text
+      = f.submit('Закончить тест', class: 'btn-primary', name: 'finish_test')
+
+.result

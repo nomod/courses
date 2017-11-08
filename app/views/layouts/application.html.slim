@@ -1,0 +1,26 @@
+doctype html
+html
+  head
+    meta content = "text/html; charset=UTF-8" http-equiv = "Content-Type"
+    title = @title || 'Онлайн курсы'
+    = csrf_meta_tags
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track' => 'reload'
+
+
+  body
+
+    = render 'shared/header'
+
+    //выводим сообщения успех/ошибка
+    - flash.each do |key, value|
+      - if key == 'success'
+        .alert.alert-success = value
+      - else
+        .alert.alert-error = value
+
+    .wrap
+      .content
+        = yield
+
+    = render 'shared/footer'
